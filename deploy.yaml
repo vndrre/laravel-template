@@ -1,0 +1,32 @@
+import: 
+  - recipe/laravel.php
+
+config:
+  repository: '' #repo.git (!!SSH)
+  keep_releases: 2
+
+hosts:
+  stage:
+    hostname: 'laravel-test.tak23leppik.itmajakas.ee' # sinudomeen.itmajakas.ee
+    http_user: # virt****
+    remote_user: # virt****
+    deploy_path: '' # ~/domeenid/www.sinudomeen.itmajakas.ee/path-to-app
+
+tasks:
+
+  opcache:clear:
+    - run: killall php83-cgi || true
+
+  deploy:
+    - 'deploy:prepare'
+    - 'deploy:vendors'
+    - 'artisan:storage:link'
+    - 'artisan:optimize:clear'
+    - 'artisan:optimize'
+    - 'deploy:publish'
+
+after:
+  deploy:failed: deploy:unlock
+
+before:
+  deploy:success: opcache:clear
