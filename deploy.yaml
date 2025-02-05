@@ -2,15 +2,15 @@ import:
   - recipe/laravel.php
 
 config:
-  repository: '' #repo.git (!!SSH)
+  repository: 'git@github.com:vndrre/laravel-template.git' #repo.git (!!SSH)
   keep_releases: 2
 
 hosts:
   stage:
-    hostname: 'laravel-test.tak23leppik.itmajakas.ee' # sinudomeen.itmajakas.ee
-    http_user: # virt****
-    remote_user: # virt****
-    deploy_path: '' # ~/domeenid/www.sinudomeen.itmajakas.ee/path-to-app
+    hostname: 'tak23leppik.itmajakas.ee' # sinudomeen.itmajakas.ee
+    http_user: 	virt124159 # virt****
+    remote_user: 	virt124159 # virt****
+    deploy_path: '/data01/virt124159/domeenid/www.tak23leppik.itmajakas.ee/htdocs' # ~/domeenid/www.sinudomeen.itmajakas.ee/path-to-app
 
 tasks:
 
